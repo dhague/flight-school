@@ -11,7 +11,7 @@ class Radar
     uri = URI.parse("http://services.faa.gov/airport/status/#{airport}")
     req = Net::HTTP::Get.new(uri)
     req["Accept"] = "application/json"
-    res = Net::HTTP.start(uri.hostname, uri.port) do |http|
+    res = Net::HTTP.start(uri.hostname, uri.port, 'proxy.wdf.sap.corp',8080) do |http|
       http.request(req)
     end
 
